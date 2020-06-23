@@ -31,11 +31,6 @@ module MainManager
       return _fetch_isolde_data(identifierName)
     end
  
-    include ToolsMain::BuildPdbredoData
-    def fetch_pdbredo_data(identifierName)
-      return _fetch_pdbredo_data(identifierName)
-    end
-
     include ToolsMain::BuildSwissmodelData
     def fetch_swissmodel_data(identifierName)
       return _fetch_swissmodel_data(identifierName)
