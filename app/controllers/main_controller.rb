@@ -221,7 +221,9 @@ class MainController < ApplicationController
       url = BSMArcUrl+ model+".pdb"
     elsif source == "AlphaFold"
       file_name = model+".pdb"
-      url = AlphaFoldUrl+ model+".pdb"
+      # url = BaseUrl+AlphaFoldUrl+model
+      # http://rinchen-dos.cnb.csic.es/ws/lrs/files/computModels/AlphaFold/PL-PRO_C_terminal/
+      url = "http://rinchen-dos.cnb.csic.es/ws/lrs/files/computModels/AlphaFold/" + model+"/"
     end
     
     file_content, http_code, http_code_name = getUrl(url,verbose=true)
