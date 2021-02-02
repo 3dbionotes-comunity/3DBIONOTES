@@ -4,7 +4,7 @@ default: &default
   reconnect: false
   pool: 8
   username: bionotes
-  password: bionotes-1
+  password: change.me
   socket: /var/run/mysqld/mysqld.sock
 
 development:
