@@ -18,11 +18,8 @@ services:
     container_name: mysql
     image: mysql:8.0.23
     pull_policy: always
-    environment:
-      MYSQL_ROOT_PASSWORD: "my-secret-pw"
-      MYSQL_DATABASE: "bionotes_production"
-      MYSQL_USER: "bionotes"
-      MYSQL_PASSWORD: "bionotes-1"
+    env_file:
+      - .env
     ports:
       - "3306"
     restart: always
