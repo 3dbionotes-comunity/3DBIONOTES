@@ -22,9 +22,6 @@ jsmol
 public/jsmolIFrame
 public/ngl
 
-/config/secrets.yml
-/config/database.yml
-
 /scripts/*.cfg
 /log
 /tmp

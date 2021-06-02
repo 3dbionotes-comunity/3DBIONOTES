@@ -1,0 +1,31 @@
+services:
+  3dbionotes:
+    container_name: 3dbionotes
+    image: 3dbionotes:stable.1
+    pull_policy: always
+    #entrypoint: "sleep 60000"
+    deploy:
+      mode: replicated
+      replicas: 1
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql
+    ports:
+      - "80:80"
+    restart: always
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.23
+    pull_policy: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "my-secret-pw"
+      MYSQL_DATABASE: "bionotes_production"
+      MYSQL_USER: "bionotes"
+      MYSQL_PASSWORD: "bionotes-1"
+    ports:
+      - "3306"
+    restart: always
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./docker/files/mysql:/docker-entrypoint-initdb.d

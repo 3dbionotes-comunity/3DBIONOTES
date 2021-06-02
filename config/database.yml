@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  username: bionotes
+  password: bionotes-1
+  host: mysql
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: bionotes_development
+
+test:
+  <<: *default
+  database: bionotes_test
+
+production:
+  <<: *default
+  database: bionotes_production
