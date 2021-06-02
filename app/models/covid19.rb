@@ -8,10 +8,40 @@ class Covid19
         query_url: "/?queryId=EMD-21375&viewer_type=ngl&button=#query",
       },
       {
+        name: "EMD-11328",
+        description: "SARS-CoV-2 spike in prefusion state (EMD-11328)",
+        image_url: "https://www.ebi.ac.uk/pdbe/static/entry/EMD-11328/400_11328.gif",
+        query_url: "/?queryId=EMD-11328&viewer_type=ngl&button=#query",
+      },
+      {
+        name: "EMD-11336",
+        description: "SARS-CoV-2 spike in prefusion state (flexibility analysis, 1-up closed conformation) (EMD-11336)",
+        image_url: "https://www.ebi.ac.uk/pdbe/static/entry/EMD-11336/400_11336.gif",
+        query_url: "/?queryId=EMD-11336&viewer_type=ngl&button=#query",
+      },
+      {
+        name: "EMD-11337",
+        description: "SARS-CoV-2 spike in prefusion state (flexibility analysis, 1-up open conformation) (EMD-11337)",
+        image_url: "https://www.ebi.ac.uk/pdbe/static/entry/EMD-11337/400_11337.gif",
+        query_url: "/?queryId=EMD-11337&viewer_type=ngl&button=#query",
+      },
+      {
+        name: "EMD-11341",
+        description: "SARS-CoV-2 spike in prefusion state (flexibility analysis, 1-up open conformation) (EMD-11341)",
+        image_url: "https://www.ebi.ac.uk/pdbe/static/entry/EMD-11341/400_11341.gif",
+        query_url: "/?queryId=EMD-11341&viewer_type=ngl&button=#query",
+      },
+      {
         name: "EMD-30210",
         description: "The nsp12-nsp7-nsp8 complex bound to the template-primer RNA and triphosphate form of Remdesivir(RTP) (EMD-30210)",
         image_url: "https://www.ebi.ac.uk/pdbe/static/entry/EMD-30210/400_30210.gif",
         query_url: "/?queryId=EMD-30210&viewer_type=ngl&button=#query",
+      },
+      {
+        name: "6ZOW",
+        description: "SARS-CoV-2 spike in prefusion state",
+        image_url: "https://www.ebi.ac.uk/pdbe/static/entry/6zow_deposited_chain_front_image-200x200.png",
+        query_url: "/?queryId=6zow&viewer_type=ngl&button=#query",
       },
       {
         name: "6LZG",
@@ -40,13 +70,15 @@ class Covid19
 
     with_indexes(entries, title).map do |entry, title_indexed|
       name, = entry.values_at("name")
+      external_url = "https://pdb-redo.eu/db/#{name}"
       {
         title: title_indexed,
         name: name,
         style: style,
         # query_url: "/?queryId=PDB-REDO-#{pdb_key}&viewer_type=ngl&button=#query",
         query_url: "/pdb_redo/#{pdb_key}",
-        external_url: "https://pdb-redo.eu/db/#{name}",
+        external_url: external_url,
+        check: external_url,
       }
     end
   end
@@ -254,7 +286,7 @@ class Covid19
           card("PDB", *parse_pdb(protein, ["PDB"])),
           card("EMDB", parse_emdb(protein, ["EMDB"])),
           card_wrapper("Interactions", [
-            card("P-P Interactions", *parse_db_with_experiments(protein, ["Interactions", "P-P-Interactions"])),
+            card("Protein-Protein Interactions", *parse_db_with_experiments(protein, ["Interactions", "P-P-Interactions"])),
             card("Ligands", *parse_db_with_experiments(protein, ["Interactions", "Ligands"])),
           ]),
           card_wrapper("Related", [
